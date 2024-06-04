@@ -11,12 +11,13 @@ public class PlayerController : MonoBehaviour
     private float mouseInputX;
     private float mouseInputY;
 
-    public float lowBound = 1;
+    public float lowBound = 3;
     public float highBound = 100;
     public float playerSpeed = 100;
 
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
+    public Camera playerCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         if (!((transform.position.y <= lowBound && flyInput < 0) || (transform.position.y >= highBound && flyInput > 0)))
             transform.Translate(Vector3.up * Time.deltaTime * playerSpeed * flyInput);
 
+
         transform.Translate(Vector3.right * Time.deltaTime * playerSpeed * horizontalInput);
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed * verticalInput);
 
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, playerCamera.transform.rotation);
         }
     }
 }
