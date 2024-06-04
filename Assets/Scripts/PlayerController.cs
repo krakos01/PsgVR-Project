@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         // Fly down/up only if in bounds
-        if ((transform.position.y <= lowBound && flyInput < 0) || (transform.position.y >= highBound && flyInput > 0))
+        if (!((transform.position.y <= lowBound && flyInput < 0) || (transform.position.y >= highBound && flyInput > 0)))
+        {
             characterController.Move(transform.TransformDirection(Vector3.up) * Time.deltaTime * playerSpeed * flyInput);
+        }
+        
 
         characterController.Move(transform.TransformDirection(Vector3.right) * Time.deltaTime * playerSpeed * horizontalInput);
         characterController.Move(transform.TransformDirection(Vector3.forward) * Time.deltaTime * playerSpeed * verticalInput);
