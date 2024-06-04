@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 1525601947772567315}
   - component: {fileID: 1844727167593644473}
   - component: {fileID: 2341056927327320000}
-  - component: {fileID: -2552131391810497832}
   m_Layer: 0
   m_Name: ProjectilePrefab
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,21 +125,3 @@ MonoBehaviour:
   topBound: 30
   bottomBound: 0
   horizontalVerticalBound: 50
---- !u!143 &-2552131391810497832
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2763833839753070296}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}

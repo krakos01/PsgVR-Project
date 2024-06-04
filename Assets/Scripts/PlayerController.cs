@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -35,42 +36,16 @@ public class PlayerController : MonoBehaviour
         flyInput = Input.GetAxis("Fly");  // left shift: UP, left ctrl: DOWN
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        mouseInputX = Input.GetAxis("Mouse X");
-        mouseInputY = Input.GetAxis("Mouse Y");
-
-        //Debug.Log(mouseInputX.ToString());
 
         // Fly down/up only if in bounds
         if ((transform.position.y <= lowBound && flyInput < 0) || (transform.position.y >= highBound && flyInput > 0))
-            flyInput = 0;
+            characterController.Move(transform.TransformDirection(Vector3.up) * Time.deltaTime * playerSpeed * flyInput);
 
-        Vector3 move = new Vector3(horizontalInput, flyInput, verticalInput);
-        characterController.Move(move* Time.deltaTime * playerSpeed);
-
-
-            
-           // transform.Translate(Vector3.up * Time.deltaTime * playerSpeed * flyInput);
-
-
-        //transform.Translate(Vector3.right * Time.deltaTime * playerSpeed * horizontalInput);
-        //transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed * verticalInput);
+        characterController.Move(transform.TransformDirection(Vector3.right) * Time.deltaTime * playerSpeed * horizontalInput);
+        characterController.Move(transform.TransformDirection(Vector3.forward) * Time.deltaTime * playerSpeed * verticalInput);
 
 
         LaunchProjectile();
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            // Take 1 HP from player.
-            playerHP--;
-            if (playerHP == 0)
-            {
-                Destroy(gameObject);
-            }
-        }
     }
 
 
@@ -81,5 +56,17 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(projectilePrefab, projectileSpawnPoint.position, playerCamera.transform.rotation);
         }
+    }
+
+    
+    // Inform GameManager that player hit obstacle
+    public void TakeDamage(int dmg)
+    {
+        playerHP -= dmg;
+        Debug.Log($"Player hp: {playerHP}");
+
+        if (playerHP <= 0)
+            GameManager.Instance.PlayerDied(gameObject);
+
     }
 }
