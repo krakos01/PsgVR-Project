@@ -22,13 +22,15 @@ public class DetectCollision : MonoBehaviour
     {
         switch (gameObject.tag) {
             case "Enemy":
-                // Destroy projectile
+                // Destroy enemy and projectile if a projectile hit an enemy
                 if (other.gameObject.CompareTag("Projectile"))
                 {
-                    Destroy(gameObject);
+                    EnemyController enemyController = gameObject.GetComponent<EnemyController>();
+                    enemyController.DestroyImmediately();
+
                     Destroy(other.gameObject);
                 }
-                // Take 1 HP from the Player
+                // Take 1 HP only from the Player if the player hit an enemy
                 else if (other.gameObject.CompareTag("Player"))
                 {
                     PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
@@ -38,6 +40,8 @@ public class DetectCollision : MonoBehaviour
                     }
                 }
                 break;
+
+            // Floor, walls and ceiling should have "Arena" tag
             case "Arena":
                 if (other.gameObject.CompareTag("Player"))
                 {
@@ -45,8 +49,7 @@ public class DetectCollision : MonoBehaviour
                     PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
                     if (playerController != null)
                     {
-                        //Debug.Log("Take 1 HP");
-                        //playerController.TakeDamage(1);
+                        // playerController.TakeDamage(1);
                     }
                 }
                 break;

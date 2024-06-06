@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public int enemiesDestroyed = 0;
+
     public static GameManager Instance;
 
     private void Awake()
@@ -26,10 +28,18 @@ public class GameManager : MonoBehaviour
 
 
 
+    /// <summary>
     /// Destroy player object when hp <= 0
+    /// </summary>
     public void PlayerDied(GameObject player)
     {
         Destroy(player);
         Debug.Log("Game Over");
+    }
+
+    public void EnemyDies(GameObject enemy)
+    {
+        Destroy(enemy);
+        enemiesDestroyed++;
     }
 }

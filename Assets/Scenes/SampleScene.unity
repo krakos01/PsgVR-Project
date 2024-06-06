@@ -235,7 +235,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.7231116
-  m_Height: 2.061003
+  m_Height: 2.08
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &320328509
@@ -315,10 +315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764c2ece57c338e40acd703578acf7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: 3
   lowBound: 2
   highBound: 100
   playerSpeed: 10
+  playerAmmo: 3
   projectilePrefab: {fileID: 2763833839753070296, guid: 8f20e5a4e9f13ef46811ca566e2241a0,
     type: 3}
   projectileSpawnPoint: {fileID: 1042654964}
@@ -331,7 +331,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320328506}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -959,6 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f89dc67e44fc6f41a9549663c1024b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesDestroyed: 0
 --- !u!4 &1083099825
 Transform:
   m_ObjectHideFlags: 0
@@ -1105,7 +1106,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849088636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d640d999e94f59048af4d3d98f737667, type: 3}
   m_Name: 
@@ -1207,6 +1208,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1934505122}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1937472312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7842929956403113016, guid: 5945ece5bf9a93940ab3a474e1ed2134,
+    type: 3}
+  m_PrefabInstance: {fileID: 2872463523252112006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1937472313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937472312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2a3997ff4c18845ad2d8849476b0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 2
 --- !u!1001 &2038249430
 PrefabInstance:
   m_ObjectHideFlags: 0

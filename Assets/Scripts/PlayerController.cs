@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,25 +10,30 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private float mouseInputX;
     private float mouseInputY;
-    public int playerHP = 3;
+    private int playerHP = 3;
+    private int playerAmmoRecoveryTime = 1;  // How much seconds pass every 1 ammo recover; 1 sec may be to slow
 
     private CharacterController characterController;
 
     public float lowBound = 3;
     public float highBound = 100;
     public float playerSpeed = 100;
+    public int playerAmmo = 3;
 
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
     public Camera playerCamera;
 
+    /// <summary>
     // Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        InvokeRepeating("RecoverProjectile", 0, playerAmmoRecoveryTime);
     }
 
-    // Update is called once per frame
+    /// Update is called once per frame
     void Update()
     {
         // Get info from keys
@@ -52,17 +56,32 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Create projectile at user's position and launch when pressend LMB
+    /// <summary>
+    ///  Create projectile at user's position and launch when pressend LMB
+    /// </summary>
     void LaunchProjectile()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (playerAmmo>0 && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Instantiate(projectilePrefab, projectileSpawnPoint.position, playerCamera.transform.rotation);
+            playerAmmo--;
         }
     }
 
-    
-    // Inform GameManager that player hit obstacle
+
+    /// <summary>
+    /// Recover 1 projectile every second
+    /// </summary>
+    void RecoverProjectile()
+    {
+        if (playerAmmo < 3)
+        {
+            playerAmmo++;
+        }
+    }
+
+
+    /// Inform GameManager that player hit obstacle
     public void TakeDamage(int dmg)
     {
         playerHP -= dmg;

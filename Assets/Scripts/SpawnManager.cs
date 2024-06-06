@@ -50,24 +50,10 @@ public class SpawnManager : MonoBehaviour
     /// <summary>
     ///  Generate position for enemy.
     /// </summary>
-    /// <param name="checkIsValid">Check if generated position is valid. Only used when too much enemies are on map.</param>
-    /// <returns>Position in some distance from another enemies if param set to true or random position if false</returns>
-    private Vector3 GetPosition(bool checkIsValid = true)
+    private Vector3 GetPosition()
     {
-        // Return random position without checking if is valid.
-        if (!checkIsValid)
-        {
-            Vector3 randomPos = new Vector3(
-                Random.Range(-spawnRangeX, spawnRangeX),
-                Random.Range(1, spawnRangeY),
-                Random.Range(-spawnRangeZ, spawnRangeZ)
-            );
-
-            return randomPos;
-        }
-
         // Try to find valid position
-        int maxAttempts = 100;  // Maximum attempts to find a valid position
+        int maxAttempts = 100;
         for (int i = 0; i < maxAttempts; i++)
         {
             Vector3 randomPos = new Vector3(
@@ -76,7 +62,7 @@ public class SpawnManager : MonoBehaviour
                 Random.Range(-spawnRangeZ, spawnRangeZ)
             );
 
-            if (checkIsValid & IsPositionValid(randomPos))
+            if (IsPositionValid(randomPos))
             {
                 return randomPos;
             }
@@ -89,8 +75,6 @@ public class SpawnManager : MonoBehaviour
     /// <summary>
     /// True if distance between enemies is higher than minimum allowed.
     /// </summary>
-    /// <param name="position"></param>
-    /// <returns></returns>
     private bool IsPositionValid(Vector3 position)
     {
         foreach(Vector3 pos in enemiesPositions)
