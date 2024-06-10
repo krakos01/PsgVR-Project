@@ -33,11 +33,12 @@ public class SpawnManager : MonoBehaviour
     private void SpawnEnemy()
     {
         Vector3 spawnPos = GetPosition();
+        float spawnRot = GetRotation();
         Debug.Log(spawnPos);
 
         if (spawnPos != Vector3.zero) // Check if a valid position was found
         {
-            Instantiate(enemy, spawnPos, enemy.transform.rotation);
+            Instantiate(enemy, spawnPos, spawnRot);
             enemiesPositions.Add(spawnPos); // Update list of existing enemy positions
         }
         else
@@ -70,6 +71,14 @@ public class SpawnManager : MonoBehaviour
         
         // Return zero vector if no valid position is found
         return Vector3.zero;
+    }
+
+    private float GetRotation()
+    {
+        // Set random Rotation
+        float randomRot = 0;
+        randomRot = Random.Range(0, 360);
+        return randomRot;
     }
 
     /// <summary>
