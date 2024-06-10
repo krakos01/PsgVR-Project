@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Wand : MonoBehaviour
 {
@@ -29,7 +31,7 @@ public class Wand : MonoBehaviour
     /// </summary>
     void LaunchProjectile()
     {
-        if (playerAmmo > 0 && Input.GetKeyDown(KeyCode.Mouse0))
+        if (playerAmmo > 0 && (Input.GetKeyDown(KeyCode.Mouse0)))
         {
             Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.transform.rotation);
             playerAmmo--;
