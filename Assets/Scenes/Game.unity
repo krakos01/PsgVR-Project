@@ -310,7 +310,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320328506}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 764c2ece57c338e40acd703578acf7d8, type: 3}
   m_Name: 
@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 541096546}
   - component: {fileID: 541096547}
   - component: {fileID: 541096548}
+  - component: {fileID: 541096549}
   m_Layer: 0
   m_Name: RightController
   m_TagString: Untagged
@@ -393,7 +394,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541096545}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -437,6 +438,37 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2763833839753070296, guid: 8f20e5a4e9f13ef46811ca566e2241a0,
     type: 3}
   projectileSpawnPoint: {fileID: 1042654964}
+--- !u!114 &541096549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541096545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e0ca4504471ca124088e1e2cfe6804ae,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: LeftHand
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &599916901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f89dc67e44fc6f41a9549663c1024b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesDestroyed: 0
 --- !u!4 &1083099825
 Transform:
   m_ObjectHideFlags: 0
