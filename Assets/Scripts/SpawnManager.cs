@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
 
         if (spawnPos != Vector3.zero) // Check if a valid position was found
         {
-            Instantiate(enemy, spawnPos, spawnRot);
+            Instantiate(enemy, spawnPos, Quaternion.Euler(0, spawnRot, 0));
             enemiesPositions.Add(spawnPos); // Update list of existing enemy positions
         }
         else
@@ -77,7 +77,7 @@ public class SpawnManager : MonoBehaviour
     {
         // Set random Rotation
         float randomRot = 0;
-        randomRot = Random.Range(0, 360);
+        randomRot = Random.Range(0f, 360f);
         return randomRot;
     }
 
