@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int enemiesDestroyed = 0;
+    protected int enemiesDestroyed = 0;
 
     public static GameManager Instance;
 

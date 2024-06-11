@@ -37,6 +37,7 @@ public class DetectCollision : MonoBehaviour
                     if (playerController != null)
                     {
                         playerController.TakeDamage(1);
+                        Debug.Log($"Player hp: {playerController.playerHP}");
                     }
                 }
                 break;
@@ -49,7 +50,8 @@ public class DetectCollision : MonoBehaviour
                     PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
                     if (playerController != null)
                     {
-                        // playerController.TakeDamage(1);
+                        playerController.TakeDamage(1);
+                        Debug.Log($"Player hp: {playerController.playerHP}");
                     }
                 }
                 break;
