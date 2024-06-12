@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         AS = GetComponent<AudioSource>();
+        availableTracks = new List<int>();
         InitializeAvaibleTracks();
     }
 
@@ -37,7 +38,6 @@ public class SoundManager : MonoBehaviour
 
     private void InitializeAvaibleTracks()
     {
-        availableTracks = new List<int>();
         for (int i = 0; i < SoundTracks.Length; i++)
         {
             availableTracks.Add(i);
