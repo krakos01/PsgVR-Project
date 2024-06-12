@@ -56,8 +56,8 @@ public class SoundManager : MonoBehaviour
 
         AS.clip = SoundTracks[AudioID];
         AS.Play();
-        
-        if (availableTracks.Count == 0)
+
+        if (availableTracks.Count == 1)
         {
             InitializeAvaibleTracks();
         }

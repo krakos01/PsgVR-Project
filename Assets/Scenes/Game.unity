@@ -2104,6 +2104,7 @@ MonoBehaviour:
   SoundTracks:
   - {fileID: 8300000, guid: 3348f77f43f4f2d49987cdbc3c553051, type: 3}
   - {fileID: 8300000, guid: 753f441200db3b0439ab543dcedecbe7, type: 3}
+  - {fileID: 8300000, guid: 14a793177081e9c4ba1c77436865d246, type: 3}
 --- !u!1 &1585717433
 GameObject:
   m_ObjectHideFlags: 0
