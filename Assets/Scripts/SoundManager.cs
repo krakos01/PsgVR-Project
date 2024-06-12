@@ -25,6 +25,7 @@ public class SoundManager : MonoBehaviour
         {
             if (isFirstSoundtrack)
             {
+                availableTracks = new List<int>();
                 StartCoroutine(PlaySoundtrackLater(1f));
                 isFirstSoundtrack = false;
             }
@@ -37,7 +38,6 @@ public class SoundManager : MonoBehaviour
 
     private void InitializeAvaibleTracks()
     {
-        availableTracks = new List<int>();
         for (int i = 0; i < SoundTracks.Length; i++)
         {
             availableTracks.Add(i);
@@ -57,7 +57,7 @@ public class SoundManager : MonoBehaviour
         AS.clip = SoundTracks[AudioID];
         AS.Play();
         
-        if (availableTracks.Count == 0)
+        if (availableTracks.Count == 1)
         {
             InitializeAvaibleTracks();
         }
