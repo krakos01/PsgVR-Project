@@ -25,11 +25,6 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnEnemy", startDelay, spawnInterval);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     // Select enemy based on probability

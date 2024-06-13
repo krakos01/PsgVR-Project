@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int enemiesDestroyed = 0;
-    private int score;
-
+    public int enemiesDestroyed = 0;
+    public int score;
     public static GameManager Instance;
 
     private void Awake()
@@ -51,4 +50,5 @@ public class GameManager : MonoBehaviour
         Destroy(enemy);
         enemiesDestroyed++;
     }
+
 }

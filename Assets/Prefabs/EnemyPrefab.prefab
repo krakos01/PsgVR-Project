@@ -135,9 +135,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8759244190586520126}
   - component: {fileID: -9057344764289760530}
+  - component: {fileID: 6217855947455778980}
   - component: {fileID: 4312713835529713426}
   - component: {fileID: 6747582800565199327}
-  - component: {fileID: 6217855947455778980}
+  - component: {fileID: -6879381205028512585}
   m_Layer: 0
   m_Name: EnemyPrefab
   m_TagString: Enemy
@@ -202,34 +203,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4312713835529713426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7842929956403113016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2a3997ff4c18845ad2d8849476b0f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 2
-  projectilePrefab: {fileID: 2763833839753070296, guid: a083d4496fc74e94d8a51be7ae0b2fbf,
-    type: 3}
-  projectileSpawnPoint: {fileID: 8759244190586520126}
---- !u!114 &6747582800565199327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7842929956403113016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc65c8ce6e5ec24c8d9ae743bb2dc10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &6217855947455778980
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -243,3 +216,43 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4312713835529713426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842929956403113016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2a3997ff4c18845ad2d8849476b0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 2
+--- !u!114 &6747582800565199327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842929956403113016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc65c8ce6e5ec24c8d9ae743bb2dc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6879381205028512585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842929956403113016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da985f6f7211354290e778af8f03168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2763833839753070296, guid: 8f20e5a4e9f13ef46811ca566e2241a0,
+    type: 3}
+  projectileSpawnPoint: {fileID: 8759244190586520126}
