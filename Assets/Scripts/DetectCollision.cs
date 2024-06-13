@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DetectCollision : MonoBehaviour
 {
+    public GameObject hitPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,18 @@ public class DetectCollision : MonoBehaviour
                 // Destroy enemy and projectile if a projectile hit an enemy
                 if (other.gameObject.CompareTag("Projectile"))
                 {
+                    Vector3 posContact = other.transform.position;
+                    if (hitPrefab != null)
+                    {
+                        var hitVFX = Instantiate(hitPrefab, posContact, Quaternion.identity);
+                    }
+
                     EnemyController enemyController = gameObject.GetComponent<EnemyController>();
                     enemyController.DestroyImmediately();
 
                     Destroy(other.gameObject);
+                   
+                   
                 }
                 // Take 1 HP only from the Player if the player hit an enemy
                 else if (other.gameObject.CompareTag("Player"))
@@ -38,7 +47,7 @@ public class DetectCollision : MonoBehaviour
                     {
                         playerController.TakeDamage(1);
                     }
-                }
+                }     
                 break;
 
             // Floor, walls and ceiling should have "Arena" tag
