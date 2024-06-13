@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         AS = GetComponent<AudioSource>();
+        availableTracks = new List<int>();
         InitializeAvaibleTracks();
     }
 
@@ -24,8 +25,7 @@ public class SoundManager : MonoBehaviour
         if (AS.isPlaying == false && isWaitingForSoundtrack == false)
         {
             if (isFirstSoundtrack)
-            {
-                availableTracks = new List<int>();
+            {   
                 StartCoroutine(PlaySoundtrackLater(1f));
                 isFirstSoundtrack = false;
             }
