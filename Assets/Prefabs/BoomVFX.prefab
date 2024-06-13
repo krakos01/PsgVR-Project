@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4321516135752291650}
   - component: {fileID: 4321516135752291649}
   - component: {fileID: 4321516135752291648}
+  - component: {fileID: 5139129215358808020}
   m_Layer: 0
   m_Name: BoomVFX
   m_TagString: Untagged
@@ -54,7 +55,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 10.432951, y: 2.239534, z: 5.2984095, w: 1}
+        m_Name: ColorBoom
+        m_Overridden: 1
+      - m_Value: {x: 0.47058824, y: 0, z: 4, w: 0}
+        m_Name: ColorParticleBoom
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -112,3 +119,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5139129215358808020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321516135752291663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ad29f58c6920c4d86d00aece6aed40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 5

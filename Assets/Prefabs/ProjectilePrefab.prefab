@@ -126,6 +126,8 @@ MonoBehaviour:
   topBound: 100
   bottomBound: 0
   horizontalVerticalBound: 50
+  hitPrefab: {fileID: 4321516135752291663, guid: efa90f2fbdf68824d86abe0174c93539,
+    type: 3}
 --- !u!54 &6629363322625329940
 Rigidbody:
   m_ObjectHideFlags: 0

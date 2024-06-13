@@ -7,6 +7,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     public float topBound = 100;
     public float bottomBound = 0;
     public float horizontalVerticalBound = 50;
+    public GameObject hitPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,12 @@ public class DestroyOutOfBounds : MonoBehaviour
             || transform.position.x > horizontalVerticalBound || transform.position.x < -horizontalVerticalBound
             || transform.position.z > horizontalVerticalBound || transform.position.z < -horizontalVerticalBound
         ) {
+
+            Vector3 posContact = transform.position;
+            if (hitPrefab != null)
+            {
+                var hitVFX = Instantiate(hitPrefab, posContact, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
