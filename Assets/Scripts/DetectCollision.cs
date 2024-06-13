@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,20 @@ public class DetectCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         switch (gameObject.tag) {
+            case "Player":
+                // Take 1 HP and destroy projectile
+                if (other.gameObject.CompareTag("EnemyProjectile"))
+                {
+                    PlayerController playerController = gameObject.GetComponent<PlayerController>();
+                    if (playerController != null)
+                    {
+                        playerController.TakeDamage(1);
+                        Debug.Log($"Player hp: {playerController.playerHP}");
+
+                        Destroy(other.gameObject);
+                    }
+                }
+                break;
             case "Enemy":
                 // Destroy enemy and projectile if a projectile hit an enemy
                 if (other.gameObject.CompareTag("Projectile"))
@@ -35,11 +49,13 @@ public class DetectCollision : MonoBehaviour
             case "Arena":
                 if (other.gameObject.CompareTag("Player"))
                 {
+                    
                     // Take 1 Hp from the Player
                     PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
                     if (playerController != null)
                     {
                         playerController.TakeDamage(1);
+                        Debug.Log("Kolizcja z ziemią");
                         Debug.Log($"Player hp: {playerController.playerHP}");
                     }
                 }

@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
 
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
-    public GameObject player;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     {
         if (player != null)
         {
-            shootDirection = (player.transform.position - transform.position).normalized;
+            shootDirection = (player.transform.position - transform.position - new Vector3(0,0.5f,0)).normalized;
         }
     }
 
@@ -49,15 +49,14 @@ public class EnemyController : MonoBehaviour
 
     void LaunchProjectile(Vector3 direction)
     {
-        // Instantiate projectile
-        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        if (projectilePrefab != null && projectileSpawnPoint != null)
+        {
+            Instantiate(projectilePrefab, projectileSpawnPoint.position + new Vector3(0,2,0), Quaternion.LookRotation(direction));
+        }
 
-        // Set projectile speed
-        // projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
     }
 
-    public void TakeDamage(int dmg)
-    {
+    public void TakeDamage(int dmg) {
         healthPoints -= dmg;
 
         if (healthPoints <= 0)
