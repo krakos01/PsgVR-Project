@@ -5,7 +5,10 @@ using UnityEngine.UIElements;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemy;
+    [SerializeField]
+    private GameObject enemy_easy;
+    [SerializeField]
+    private GameObject enemy_difficult;
 
     private float spawnRangeX = 50;
     private float spawnRangeY = 50;
@@ -29,17 +32,32 @@ public class SpawnManager : MonoBehaviour
     }
 
 
+    // Select enemy based on probability
+    private bool ShouldSpawnEasyEnemy()
+    {
+        int random_value = Random.Range(0, 100);
+
+        if (random_value < 70) return true;
+        else return false;
+    }
+
+
     // Randomly generate spawn position
     private void SpawnEnemy()
     {
         Vector3 spawnPos = GetPosition();
         float spawnRot = GetRotation();
-        Debug.Log(spawnPos);
 
-        if (spawnPos != Vector3.zero) // Check if a valid position was found
+        bool easyEnemy = ShouldSpawnEasyEnemy();
+
+        if (spawnPos != Vector3.zero)  // Check if a valid position was found
         {
-            Instantiate(enemy, spawnPos, Quaternion.Euler(0, spawnRot, 0));
-            enemiesPositions.Add(spawnPos); // Update list of existing enemy positions
+            if (easyEnemy)
+                Instantiate(enemy_easy, spawnPos, Quaternion.Euler(0, spawnRot, 0));
+            else
+                Instantiate(enemy_difficult, spawnPos, Quaternion.Euler(0, spawnRot, 0));
+
+            enemiesPositions.Add(spawnPos);  // Update list of existing enemy positions
         }
         else
         {
@@ -48,9 +66,8 @@ public class SpawnManager : MonoBehaviour
     }
 
 
-    /// <summary>
-    ///  Generate position for enemy.
-    /// </summary>
+
+    //  Generate position for enemy.
     private Vector3 GetPosition()
     {
         // Try to find valid position
@@ -73,6 +90,7 @@ public class SpawnManager : MonoBehaviour
         return Vector3.zero;
     }
 
+
     private float GetRotation()
     {
         // Set random Rotation
@@ -81,9 +99,8 @@ public class SpawnManager : MonoBehaviour
         return randomRot;
     }
 
-    /// <summary>
-    /// True if distance between enemies is higher than minimum allowed.
-    /// </summary>
+
+    // True if distance between enemies is higher than minimum allowed.
     private bool IsPositionValid(Vector3 position)
     {
         foreach(Vector3 pos in enemiesPositions)

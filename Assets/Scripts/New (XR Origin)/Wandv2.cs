@@ -22,14 +22,11 @@ public class Wandv2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         LaunchProjectile();
     }
 
 
-    /// <summary>
-    ///  Create projectile at user's position and launch when pressend LMB
-    /// </summary>
+    //  Create projectile at user's position and launch when pressend LMB
     void LaunchProjectile()
     {
         float triggerValue = shoot.action.ReadValue<float>();
@@ -41,9 +38,7 @@ public class Wandv2 : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Recover 1 projectile every second
-    /// </summary>
+    // Recover 1 projectile every second
     void RecoverProjectile()
     {
         if (playerAmmo < 3)

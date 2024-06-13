@@ -5,17 +5,6 @@ using UnityEngine;
 public class DetectCollision : MonoBehaviour
 {
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     // Destroy both object on collision
     private void OnTriggerEnter(Collider other)
@@ -26,7 +15,7 @@ public class DetectCollision : MonoBehaviour
                 if (other.gameObject.CompareTag("Projectile"))
                 {
                     EnemyController enemyController = gameObject.GetComponent<EnemyController>();
-                    enemyController.DestroyImmediately();
+                    enemyController.TakeDamage(1);
 
                     Destroy(other.gameObject);
                 }

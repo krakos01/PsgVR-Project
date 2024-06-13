@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    protected int enemiesDestroyed = 0;
+    private int enemiesDestroyed = 0;
+    private int score;
 
     public static GameManager Instance;
 
@@ -17,20 +19,27 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        score = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddPoints(int points)
     {
-        
+        score += points;
+    }
+
+    public void EndGame()
+    {
+        // Save score to PlayerPrefs
+        PlayerPrefs.SetInt("FinalScore", score);
+        PlayerPrefs.Save();
+
+        // Load the EndMenu scene
+        SceneManager.LoadScene("EndMenu");
     }
 
 
 
-    /// <summary>
-    /// Destroy player object when hp <= 0
-    /// </summary>
+    // Destroy player object when hp <= 0
     public void PlayerDied(GameObject player)
     {
         Destroy(player);
