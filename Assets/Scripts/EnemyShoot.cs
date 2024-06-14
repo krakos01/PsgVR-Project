@@ -21,7 +21,7 @@ public class EnemyShoot : MonoBehaviour
 
         if (player != null)
         {
-            //StartCoroutine(SetDirectionAtPlayer());
+            StartCoroutine(SetDirectionAtPlayer());
             StartCoroutine(ShootAtPlayer());
         }
     }
@@ -56,8 +56,8 @@ public class EnemyShoot : MonoBehaviour
     {
         while (true)
         {
-            //LookAtPlayer(shootDirection);
-            //yield return new WaitForSeconds(0.1f);
+            LookAtPlayer(shootDirection);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -86,7 +86,7 @@ public class EnemyShoot : MonoBehaviour
             if (direction != Vector3.zero)
             {
                 // Instantiate projectile
-                Instantiate(projectilePrefab, projectileSpawnPoint.position + new Vector3(0, 0, 0), Quaternion.LookRotation(direction));
+                Instantiate(projectilePrefab, projectileSpawnPoint.position + new Vector3(2.851f, 0.849f, -0.749f), Quaternion.LookRotation(direction));
             }
         }
     }
