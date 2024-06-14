@@ -32,7 +32,7 @@ public class EnemyShoot : MonoBehaviour
     {
         if (player != null)
         {
-            shootDirection = (player.transform.position - transform.position - new Vector3(0, 0.5f, 0)).normalized;
+            shootDirection = (player.transform.position - transform.position - new Vector3(0, 0, 0)).normalized;
         }
     }
 
