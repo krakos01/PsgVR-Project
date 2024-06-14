@@ -51,7 +51,7 @@ public class AudioSettingsScript : MonoBehaviour
 
     private float LinearToDB(float sliderValue)
     {
-        return Mathf.Log10(sliderValue) * 20f+5f;
+        return Mathf.Log10(sliderValue) * 20f;
     }
     private float DBToLinear(float value)
     {
