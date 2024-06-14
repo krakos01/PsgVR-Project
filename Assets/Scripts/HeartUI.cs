@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class HeartUI : MonoBehaviour
 {
-    public GameObject player;
-    private playerHP playerHP;
+    public PlayerController playerController;
+    //private playerHP playerHP;
 
     public int maxHeath;
+    private int playerHP;
 
     public Sprite emptyHeart;
     public Sprite fullHeart;
@@ -17,16 +18,26 @@ public class HeartUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        int health = player.GetComponent<playerHP>();
+        if (playerController != null)
+        {
+            // Odczytaj playerHP
+            playerHP = playerController.playerHP;
+            Debug.Log("Player HP: " + playerHP);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerController not found!");
+        }
+
         for (int i = 0; i < hearts.Length; i++)
         {
-            if(i<health)
+            if(i<playerHP)
             {
                 hearts[i].sprite = fullHeart;
             }
