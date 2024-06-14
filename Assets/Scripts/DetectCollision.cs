@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetectCollision : MonoBehaviour
 {
-
+    public GameObject hitPrefab;
 
     // Destroy both object on collision
     private void OnTriggerEnter(Collider other)
@@ -28,6 +28,12 @@ public class DetectCollision : MonoBehaviour
                 // Destroy enemy and projectile if a projectile hit an enemy
                 if (other.gameObject.CompareTag("Projectile"))
                 {
+                    Vector3 posContact = other.transform.position;
+                    if (hitPrefab != null)
+                    {
+                        var hitVFX = Instantiate(hitPrefab, posContact, Quaternion.identity);
+                    }
+
                     EnemyController enemyController = gameObject.GetComponent<EnemyController>();
                     enemyController.TakeDamage(1);
 
