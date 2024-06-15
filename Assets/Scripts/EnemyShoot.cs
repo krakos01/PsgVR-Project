@@ -20,8 +20,7 @@ public class EnemyShoot : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         if (player != null)
-        {
-            StartCoroutine(SetDirectionAtPlayer());
+        {    
             StartCoroutine(ShootAtPlayer());
         }
     }
@@ -52,29 +51,6 @@ public class EnemyShoot : MonoBehaviour
         }
     }
 
-    private IEnumerator SetDirectionAtPlayer()
-    {
-        while (true)
-        {
-            LookAtPlayer(shootDirection);
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-
-    void LookAtPlayer(Vector3 direction)
-    {
-        if (direction != Vector3.zero)
-            {
-                Vector3 Lookdirection = player.transform.position - transform.position;
-
-                Quaternion targetRotation = Quaternion.LookRotation(Lookdirection);
-
-
-                targetRotation = Quaternion.Euler(Vector3.up * -90);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime* rotationSpeed);
-            }
-    }
-
 
 
     void LaunchProjectile(Vector3 direction)
@@ -86,7 +62,7 @@ public class EnemyShoot : MonoBehaviour
             if (direction != Vector3.zero)
             {
                 // Instantiate projectile
-                Instantiate(projectilePrefab, projectileSpawnPoint.position + new Vector3(2.851f, 0.849f, -0.749f), Quaternion.LookRotation(direction));
+                Instantiate(projectilePrefab, projectileSpawnPoint.position /*+ new Vector3(0, 0, 0)*/, Quaternion.LookRotation(direction));
             }
         }
     }
