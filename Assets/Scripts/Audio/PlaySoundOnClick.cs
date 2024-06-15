@@ -4,6 +4,7 @@ using UnityEngine.Audio;
 
 public class PlaySoundOnClick : MonoBehaviour
 {
+    public static PlaySoundOnClick Instance {get; set;}
 
     public AudioClip clickSound;
     private AudioSource AS;
@@ -18,6 +19,19 @@ public class PlaySoundOnClick : MonoBehaviour
         if (clickSound != null)
         {
             AS.PlayOneShot(clickSound);
+        }
+    }
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

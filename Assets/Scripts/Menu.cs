@@ -18,26 +18,37 @@ public class Menu : MonoBehaviour
             scoreText = scoreTextObject.GetComponent<TextMeshProUGUI>();
             scoreText.text = "SCORE: " + finalScore.ToString();
         }
+
+        StartCoroutine(WaitAMoment());
+    }
+
+    public IEnumerator WaitAMoment()
+    {
+        yield return new WaitForSeconds(1f);
     }
 
     public void PlayGame()
     {
+        WaitAMoment();
         SceneManager.LoadScene("GAME");
     }
 
     public void ExitGame()
     {
+        WaitAMoment();
         Debug.Log("QUIT");
         Application.Quit();
     }
 
     public void OpenScoreboard()
     {
+        WaitAMoment();
         SceneManager.LoadScene("Scoreboard");
     }
 
     public void OpenMenu()
     {
+        WaitAMoment();
         SceneManager.LoadScene("StartMenu");
     }
 }
