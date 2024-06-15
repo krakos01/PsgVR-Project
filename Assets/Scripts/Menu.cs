@@ -19,36 +19,38 @@ public class Menu : MonoBehaviour
             scoreText.text = "SCORE: " + finalScore.ToString();
         }
 
-        StartCoroutine(WaitAMoment());
     }
 
-    public IEnumerator WaitAMoment()
+    private IEnumerator LoadSceneAfterTime(string nameScene)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(nameScene);
     }
 
     public void PlayGame()
     {
-        WaitAMoment();
-        SceneManager.LoadScene("GAME");
+        StartCoroutine(LoadSceneAfterTime("Game"));
     }
 
     public void ExitGame()
     {
-        WaitAMoment();
         Debug.Log("QUIT");
+        StartCoroutine(ExitGameAfterTime());
+    }
+
+    private IEnumerator ExitGameAfterTime()
+    {
+        yield return new WaitForSeconds(1f);
         Application.Quit();
     }
 
     public void OpenScoreboard()
     {
-        WaitAMoment();
-        SceneManager.LoadScene("Scoreboard");
+        StartCoroutine(LoadSceneAfterTime("Scoreboard"));
     }
 
     public void OpenMenu()
     {
-        WaitAMoment();
-        SceneManager.LoadScene("StartMenu");
+        StartCoroutine(LoadSceneAfterTime("StartMenu"));
     }
 }
